@@ -1,3 +1,8 @@
+# 3.5.8
+
+- Fix path encoding for space and plus characters in object names to prevent signature mismatch errors #7
+- Update fPutObject method signature to use named parameters for better API consistency
+
 # 3.5.7
 
 - fix maxKeys error while using listObject query #97
