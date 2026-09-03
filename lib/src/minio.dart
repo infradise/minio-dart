@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'dart:convert';
+// import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:minio/src/minio_client.dart';
@@ -1134,8 +1135,10 @@ class Minio {
     return StatObjectResult(
       etag: etag,
       size: int.parse(resp.headers['content-length']!),
+      // \__ size: int.parse(resp.headers['content-length']!),
       metaData: extractMetadata(resp.headers),
       lastModified: parseRfc7231Time(resp.headers['last-modified']!),
+      // \__ lastModified: parseRfc7231Time(resp.headers['last-modified'] ?? HttpDate.format(DateTime.now().toUtc())),
       acl: retrieveAcls ? await getObjectACL(bucket, object) : null,
     );
   }
